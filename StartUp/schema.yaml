@@ -1,0 +1,705 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /blog/api/v1/posts/:
+    get:
+      operationId: listPosts
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+          description: ''
+      tags:
+      - blog
+    post:
+      operationId: createPost
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Post'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/post/{id}/:
+    get:
+      operationId: retrievePost
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this post.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+      tags:
+      - blog
+    put:
+      operationId: updatePost
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this post.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Post'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+      tags:
+      - blog
+    patch:
+      operationId: partialUpdatePost
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this post.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Post'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+      tags:
+      - blog
+    delete:
+      operationId: destroyPost
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this post.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/cats/:
+    get:
+      operationId: listCategorys
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cat'
+          description: ''
+      tags:
+      - blog
+    post:
+      operationId: createCategory
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cat'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/cat/{id}/:
+    get:
+      operationId: retrieveCategory
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Category.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+          description: ''
+      tags:
+      - blog
+    put:
+      operationId: updateCategory
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Category.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cat'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+          description: ''
+      tags:
+      - blog
+    patch:
+      operationId: partialUpdateCategory
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Category.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cat'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+          description: ''
+      tags:
+      - blog
+    delete:
+      operationId: destroyCategory
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Category.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/tags/:
+    get:
+      operationId: listTags
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - blog
+    post:
+      operationId: createTag
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/tag/{id}/:
+    get:
+      operationId: retrieveTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - blog
+    put:
+      operationId: updateTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - blog
+    patch:
+      operationId: partialUpdateTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - blog
+    delete:
+      operationId: destroyTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/comments/:
+    get:
+      operationId: listComments
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - blog
+    post:
+      operationId: createComment
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/comment/{id}/:
+    get:
+      operationId: retrieveComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - blog
+    put:
+      operationId: updateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - blog
+    patch:
+      operationId: partialUpdateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - blog
+    delete:
+      operationId: destroyComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/register/:
+    post:
+      operationId: createRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/login/:
+    post:
+      operationId: createLogin
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - blog
+  /blog/api/v1/logout/:
+    post:
+      operationId: createLogout
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - blog
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+        image:
+          type: string
+          format: binary
+        author:
+          type: integer
+        category:
+          type: integer
+        tag:
+          type: array
+          items:
+            type: integer
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - title
+      - slug
+      - description
+      - image
+      - author
+      - category
+    Cat:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 50
+        slug:
+          type: string
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - title
+      - slug
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 20
+      required:
+      - name
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        post:
+          type: integer
+        name:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        text:
+          type: string
+          maxLength: 200
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - post
+      - name
+      - email
+      - text

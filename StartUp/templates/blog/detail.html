@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} StartUp - Detail Template {% endblock title %}
+
+{% block blog %} active {% endblock blog %}
+
+
+{% block extra %}
+
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">Blog Detail</h1>
+            <a href="" class="h5 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="" class="h5 text-white">Blog Detail</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock extra %}
+
+
+{% block content %}
+
+<!-- Blog Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <!-- Blog Detail Start -->
+                <div class="mb-5">
+                    {% if post.image %}
+                    <img class="img-fluid w-100 rounded mb-5" src="{{ post.image.url }}" alt="">
+                    {% endif %}
+                    <h1 class="mb-4">{{ post.title }}</h1>
+                    <p>{{ post.description}}</p>
+                </div>
+                <!-- Blog Detail End -->
+
+                <!-- Comment List Start -->
+                <div class="mb-5">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        {% if comments.count == 0 %}
+                        <h3 class="mb-0">No Comments</h3>
+                        {% else %}
+                        <h3 class="mb-0">{{ comments.count }} Comments</h3>
+                        {% endif %}
+                    </div>
+                    {% for comment in comments %}
+                    <div class="d-flex mb-4">
+                        <div class="ps-3">
+                            <h6><a href="">{{ comment.name }}</a> <small><i>{{ comment.created }}</i></small></h6>
+                            <p>{{ comment.text }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Comment List End -->
+
+                <!-- Comment Form Start -->
+                <div class="bg-light rounded p-5">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="mb-0">Leave A Comment</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input type="text" class="form-control bg-white border-0" name="full_name" placeholder="Your Name" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="email" class="form-control bg-white border-0" name="email" placeholder="Your Email" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control bg-white border-0" rows="5" name="comment" placeholder="Comment"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Leave Your Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Form End -->
+            </div>
+
+            <!-- Sidebar Start -->
+            <div class="col-lg-4">
+                <!-- Search Form Start -->
+                <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3" placeholder="Keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <!-- Search Form End -->
+
+                <!-- Category Start -->
+                <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="mb-0">Categories</h3>
+                    </div>
+                    <div class="link-animated d-flex flex-column justify-content-start">
+                        <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="{% url 'list' %}"><i class="bi bi-arrow-right me-2"></i>All Categoires</a>
+                        {% for cat in cats %}
+                        <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="{% url 'cat_detail' cat.slug %}"><i class="bi bi-arrow-right me-2"></i>{{ cat.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Category End -->
+
+                <!-- Image Start -->
+                <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    <img src="{% static 'img/blog-1.jpg' %}" alt="" class="img-fluid rounded">
+                </div>
+                <!-- Image End -->
+
+                <!-- Tags Start -->
+                {% if post.tag.count > 0 %}
+                <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="mb-0">Tag Cloud</h3>
+                    </div>
+                    <div class="d-flex flex-wrap m-n1">
+                        {% for tag in post.tag.all %}
+                        <a href="" class="btn btn-light m-1">#{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <!-- Tags End -->
+
+                <!-- Plain Text Start -->
+                <div class="wow slideInUp" data-wow-delay="0.1s">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="mb-0">Plain Text</h3>
+                    </div>
+                    <div class="bg-light text-center" style="padding: 30px;">
+                        <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
+                        <a href="" class="btn btn-primary py-2 px-4">Read More</a>
+                    </div>
+                </div>
+                <!-- Plain Text End -->
+            </div>
+            <!-- Sidebar End -->
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+
+
+{% endblock content %}
